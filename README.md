@@ -37,6 +37,7 @@ Create a container for the player:
  const player = Stamiku.createPlayer('#video-player', {
     src: 'path/to/video.mp4',
     primaryColor: '#ff0000',
+    rememberPosition: true,
     intro: {
         enabled: true,
         startTime: 30,
@@ -116,6 +117,7 @@ Oynatıcıyı başlatın:
  const player = Stamiku.createPlayer('#video-player', {
     src: 'video/yolu.mp4',
     primaryColor: '#ff0000',
+    rememberPosition: true,
     intro: {
         enabled: true,
         startTime: 30,
