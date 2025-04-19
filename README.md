@@ -71,6 +71,7 @@ The player provides multiple methods for controlling playback programmatically:
 Stamiku Player is compatible with all modern browsers including Chrome, Firefox, Safari, and Edge.
 
 **Stamiku** is distributed under the MIT license.
+
 © 2025 **Stamiku**. All rights reserved.
 
 
