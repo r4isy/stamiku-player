@@ -79,7 +79,7 @@ Stamiku Player is compatible with all modern browsers including Chrome, Firefox,
 
 
 
-
+----------------------------------------------------------------
 
 
 
