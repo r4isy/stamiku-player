@@ -1,5 +1,7 @@
-Features and Details (English)
+**Features and Details (English)**
+
 Stamiku Video Player
+
 Stamiku is a modern, feature-rich HTML5 video player built with pure JavaScript. It provides a sleek interface with comprehensive controls while maintaining lightweight performance. Perfect for websites, blogs, and web applications looking for a customizable video playback solution.
 Key Features
 
