@@ -24,7 +24,7 @@ Key Features
 **Implementation**
 Include the script in your HTML:
 ```html
- <script src="https://player.stamiku.com/js13-31.js"></script>
+ <script src="https://player.stamiku.com/ajax/1.0/stamiku.js"></script>
 ```
  
 Create a container for the player:
@@ -113,7 +113,7 @@ Stamiku, saf JavaScript ile oluşturulmuş modern ve özellik açısından zengi
 
 HTML'inize scripti ekleyin:
 ```html
- <script src="https://player.stamiku.com/js13-31.js"></script>
+ <script src="https://player.stamiku.com/ajax/1.0/stamiku.js"></script>
  ```
 
 Oynatıcı için bir konteyner oluşturun:
