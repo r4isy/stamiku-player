@@ -143,3 +143,8 @@ Oynatıcı, programatik olarak kontrol için birden fazla metod sağlar:
 
 **Tarayıcı Desteği**
 Stamiku Player, Chrome, Firefox, Safari ve Edge dahil tüm modern tarayıcılarla uyumludur.
+
+
+**Stamiku**, MIT lisansı altında dağıtılmaktadır.
+
+© 2025 **Stamiku**. Tüm hakları saklıdır.
