@@ -4,12 +4,19 @@ Stamiku is a modern, feature-rich HTML5 video player built with pure JavaScript.
 Key Features
 
 Modern Interface: Clean, responsive design with customizable primary color
+
 Comprehensive Controls: Play/pause, volume control, fullscreen, playback speed
+
 Auto Position Memory: Automatically remembers and resumes from the last viewing position
+
 Intro Skip: Automatically identifies and provides option to skip intro sections
+
 Keyboard Shortcuts: Space/K (play/pause), F (fullscreen), M (mute), arrow keys (skip)
+
 Skip Animations: Visual animation when skipping forward or backward
+
 Mobile-Friendly: Responsive design adapts to all screen sizes
+
 Customizable: Primary color, intro settings, and other options
 
 Implementation
@@ -33,14 +40,22 @@ Initialize the player:
 API Methods
 The player provides multiple methods for controlling playback programmatically:
 
-play(): Starts playback,
-pause(): Pauses playback,
-togglePlay(): Toggles between play and pause,
-mute() / unmute(): Controls audio,
-setVolume(level): Sets volume (0-1),
-setTime(seconds): Jumps to specific position,
-toggleFullScreen(): Toggles fullscreen mode,
-setPlaybackRate(rate): Changes playback speed,
+play(): Starts playback
+
+pause(): Pauses playback
+
+togglePlay(): Toggles between play and pause
+
+mute() / unmute(): Controls audio
+
+setVolume(level): Sets volume (0-1)
+
+setTime(seconds): Jumps to specific position
+
+toggleFullScreen(): Toggles fullscreen mode
+
+setPlaybackRate(rate): Changes playback speed
+
 
 Browser Support
 Stamiku Player is compatible with all modern browsers including Chrome, Firefox, Safari, and Edge.
@@ -54,12 +69,19 @@ Stamiku, saf JavaScript ile oluşturulmuş modern ve özellik açısından zengi
 Temel Özellikler
 
 Modern Arayüz: Temiz, duyarlı tasarım ve özelleştirilebilir ana renk
+
 Kapsamlı Kontroller: Oynat/duraklat, ses kontrolü, tam ekran, oynatma hızı
+
 Otomatik Pozisyon Hatırlama: Son izleme konumunu otomatik olarak hatırlar ve devam eder
+
 İntro Atlama: Giriş bölümlerini otomatik olarak tanımlar ve atlama seçeneği sunar
+
 Klavye Kısayolları: Space/K (oynat/duraklat), F (tam ekran), M (sessiz), ok tuşları (atlama)
+
 Atlama Animasyonları: İleri veya geri atlarken görsel animasyon
+
 Mobil Uyumlu: Duyarlı tasarım tüm ekran boyutlarına uyum sağlar
+
 Özelleştirilebilir: Ana renk, intro ayarları ve diğer seçenekler
 
 Kurulum
@@ -84,12 +106,19 @@ API Methodları
 Oynatıcı, programatik olarak kontrol için birden fazla metod sağlar:
 
 play(): Oynatmayı başlatır
+
 pause(): Oynatmayı duraklatır
+
 togglePlay(): Oynat ve duraklat arasında geçiş yapar
+
 mute() / unmute(): Sesi kontrol eder
+
 setVolume(level): Ses seviyesini ayarlar (0-1)
+
 setTime(seconds): Belirli bir konuma atlar
+
 toggleFullScreen(): Tam ekran modunu açar/kapatır
+
 setPlaybackRate(rate): Oynatma hızını değiştirir
 
 Tarayıcı Desteği
