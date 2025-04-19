@@ -76,6 +76,15 @@ Stamiku Player is compatible with all modern browsers including Chrome, Firefox,
 © 2025 **Stamiku**. All rights reserved.
 
 
+
+
+
+
+
+
+
+
+
 **Özellikler ve Detaylar (Türkçe)**
 
 Stamiku Video Oynatıcı
