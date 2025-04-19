@@ -58,10 +58,10 @@
 }
 
 .stamiku-progress-container {
-  width: 100%;
+  width: calc(100% - 32px);
   height: 8px;
-  padding: 0 16px;
-  margin-bottom: 12px;
+  padding: 0;
+  margin: 0 16px 12px 16px;
   position: relative;
 }
 
@@ -132,11 +132,7 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.stamiku-time {
-  color: white;
-  font-size: 14px;
-  margin-left: 8px;
-}
+
 
 .stamiku-volume-container {
   display: flex;
@@ -221,7 +217,20 @@
   padding: 12px;
   width: 200px;
   z-index: 9999;
+  transform-origin: bottom right;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  pointer-events: none;
 }
+
+.stamiku-settings-panel.stamiku-visible {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 
 .stamiku-settings-title {
   color: white;
@@ -265,6 +274,13 @@
 
 .stamiku-shortcut-key {
   font-family: monospace;
+}
+
+.stamiku-time {
+  color: white;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  margin-left: 8px;
 }
 
 .stamiku-skip-animation {
@@ -311,6 +327,31 @@
 
 .stamiku-hidden {
   display: none !important;
+}
+
+.stamiku-time-tooltip {
+  position: absolute;
+  bottom: 20px;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.stamiku-context-menu {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  z-index: 9999;
 }
 
 @keyframes pulse {
@@ -473,6 +514,54 @@
     let skipAnimationTimeout;
     let introSkipBtn = null;
     
+    video.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+      
+      const menuDiv = document.createElement('div');
+      menuDiv.className = 'stamiku-context-menu';
+      menuDiv.style.cssText = `
+        left: ${event.pageX}px;
+        top: ${event.pageY}px;
+      `;
+      menuDiv.textContent = 'Stamiku v1.0';
+      document.body.appendChild(menuDiv);
+      
+      document.addEventListener('click', function closeMenu() {
+        if (document.body.contains(menuDiv)) {
+          document.body.removeChild(menuDiv);
+        }
+        document.removeEventListener('click', closeMenu);
+      });
+    });
+
+    progressBar.addEventListener('mousemove', function(event) {
+      const rect = progressBar.getBoundingClientRect();
+      const pos = (event.clientX - rect.left) / rect.width;
+      const timeInSeconds = pos * video.duration;
+      
+      const existingTooltip = progressBar.querySelector('.stamiku-time-tooltip');
+      if (existingTooltip) {
+        existingTooltip.remove();
+      }
+      
+      const tooltip = document.createElement('div');
+      tooltip.className = 'stamiku-time-tooltip';
+      tooltip.style.left = `${event.clientX - rect.left}px`;
+      
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = Math.floor(timeInSeconds % 60);
+      tooltip.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+      
+      progressBar.appendChild(tooltip);
+    });
+
+    progressBar.addEventListener('mouseleave', function() {
+      const tooltip = progressBar.querySelector('.stamiku-time-tooltip');
+      if (tooltip) {
+        tooltip.remove();
+      }
+    });
+
     if (settings.intro && settings.intro.enabled) {
       introSkipBtn = document.createElement('button');
       introSkipBtn.className = 'stamiku-intro-skip stamiku-hidden';
@@ -606,9 +695,19 @@
     }
     
     function toggleSettings() {
-      settingsPanel.classList.toggle('stamiku-hidden');
+      if (settingsPanel.classList.contains('stamiku-visible')) {
+        settingsPanel.classList.remove('stamiku-visible');
+        setTimeout(() => {
+          settingsPanel.classList.add('stamiku-hidden');
+        }, 200);
+      } else {
+        settingsPanel.classList.remove('stamiku-hidden');
+        requestAnimationFrame(() => {
+          settingsPanel.classList.add('stamiku-visible');
+        });
+      }
     }
-    
+
     function loadSavedPosition() {
       const savedPosition = getCookie(`stamiku_position_${btoa(settings.src)}`);
       if (savedPosition) {
@@ -704,7 +803,10 @@
       if (!settingsPanel.classList.contains('stamiku-hidden') && 
           !settingsPanel.contains(event.target) && 
           event.target !== settingsBtn) {
-        settingsPanel.classList.add('stamiku-hidden');
+        settingsPanel.classList.remove('stamiku-visible');
+        setTimeout(() => {
+          settingsPanel.classList.add('stamiku-hidden');
+        }, 200);
       }
     });
     
@@ -716,7 +818,12 @@
       btn.addEventListener('click', () => {
         const speed = parseFloat(btn.dataset.speed);
         setPlaybackSpeed(speed);
-        settingsPanel.classList.add('stamiku-hidden');
+        setTimeout(() => {
+          settingsPanel.classList.remove('stamiku-visible');
+          setTimeout(() => {
+            settingsPanel.classList.add('stamiku-hidden');
+          }, 200);
+        }, 100);
       });
     });
     
