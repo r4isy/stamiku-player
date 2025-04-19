@@ -33,14 +33,14 @@ Initialize the player:
 API Methods
 The player provides multiple methods for controlling playback programmatically:
 
-play(): Starts playback
-pause(): Pauses playback
-togglePlay(): Toggles between play and pause
-mute() / unmute(): Controls audio
-setVolume(level): Sets volume (0-1)
-setTime(seconds): Jumps to specific position
-toggleFullScreen(): Toggles fullscreen mode
-setPlaybackRate(rate): Changes playback speed
+play(): Starts playback,
+pause(): Pauses playback,
+togglePlay(): Toggles between play and pause,
+mute() / unmute(): Controls audio,
+setVolume(level): Sets volume (0-1),
+setTime(seconds): Jumps to specific position,
+toggleFullScreen(): Toggles fullscreen mode,
+setPlaybackRate(rate): Changes playback speed,
 
 Browser Support
 Stamiku Player is compatible with all modern browsers including Chrome, Firefox, Safari, and Edge.
