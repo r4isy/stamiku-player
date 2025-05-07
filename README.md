@@ -127,7 +127,7 @@ Oynatıcıyı başlatın:
  const player = Stamiku.createPlayer('#video-player', {
     src: 'video/yolu.mp4',
     primaryColor: '#ff0000',
-    language: 'en',
+    language: 'tr',
     rememberPosition: true,
     intro: {
         enabled: true,
