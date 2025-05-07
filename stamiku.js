@@ -1,5 +1,5 @@
 /**
- * stamiku v1.0
+ * stamiku v1.1 - by r4isy
  */
 
 (function(window) {
@@ -8,17 +8,39 @@
   const Stamiku = {};
   
   const Icons = {
-    play: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>',
-    pause: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>',
-    volume: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>',
-    mute: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>',
-    fullscreen: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>',
-    exitFullscreen: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>',
-    skipForward: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>',
-    skipBack: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>',
-    settings: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>',
-    arrowLeft: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
-    arrowRight: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+    play: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>',
+    pause: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>',
+    volume: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>',
+    mute: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>',
+    fullscreen: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>',
+    exitFullscreen: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>',
+    skipForward: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>',
+    skipBack: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>',
+    settings: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>',
+    arrowLeft: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+    arrowRight: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>',
+    language: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>'
+  };
+
+  const translations = {
+    tr: {
+      playbackSpeed: 'Oynatma Hızı',
+      shortcuts: 'Kısayollar',
+      playPause: 'Oynat/Duraklat:',
+      forward: 'İleri/Geri:',
+      fullscreen: 'Tam Ekran:',
+      mute: 'Sessiz:',
+      skipIntro: 'İntroyu Atla'
+    },
+    en: {
+      playbackSpeed: 'Playback Speed',
+      shortcuts: 'Shortcuts',
+      playPause: 'Play/Pause:',
+      forward: 'Forward/Backward:',
+      fullscreen: 'Fullscreen:',
+      mute: 'Mute:',
+      skipIntro: 'Skip Intro'
+    }
   };
 
   const CSS = `
@@ -30,6 +52,101 @@
   background-color: #000;
   border-radius: 8px;
   aspect-ratio: 16/9;
+}
+
+/* Improved Mobile responsiveness */
+@media (max-width: 768px) {
+  .stamiku-player {
+    border-radius: 4px;
+  }
+  
+  .stamiku-control-left,
+  .stamiku-control-right {
+    gap: 2px;
+  }
+  
+  .stamiku-btn {
+    padding: 3px;
+  }
+  
+  .stamiku-time {
+    font-size: 11px;
+    margin-left: 4px;
+  }
+  
+  .stamiku-controls {
+    padding-bottom: 6px;
+  }
+
+  .stamiku-big-play-btn {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .stamiku-settings-panel {
+    width: 160px;
+    bottom: 50px;
+  }
+  
+  .stamiku-progress-container {
+    margin-bottom: 6px;
+  }
+  
+  .stamiku-control-items {
+    padding: 0 8px;
+  }
+  
+  .stamiku-language-switcher {
+    top: 5px;
+    right: 5px;
+  }
+  
+  .stamiku-language-btn {
+    padding: 2px 5px;
+    font-size: 10px;
+  }
+  
+  .stamiku-intro-skip {
+    bottom: 80px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .stamiku-settings-title {
+    font-size: 12px;
+  }
+  
+  .stamiku-speed-btn {
+    font-size: 11px;
+  }
+  
+  .stamiku-shortcuts {
+    font-size: 10px;
+  }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+  .stamiku-control-right {
+    width: auto;
+    justify-content: flex-end;
+  }
+  
+  .stamiku-control-left {
+    width: auto;
+    justify-content: flex-start;
+  }
+  
+  .stamiku-big-play-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .stamiku-btn svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .stamiku-player video {
@@ -132,8 +249,6 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-
-
 .stamiku-volume-container {
   display: flex;
   align-items: center;
@@ -194,8 +309,8 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,8 +344,6 @@
   opacity: 1;
   pointer-events: auto;
 }
-
-
 
 .stamiku-settings-title {
   color: white;
@@ -298,7 +411,7 @@
 
 .stamiku-skip-text {
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   margin-left: 8px;
   margin-right: 8px;
@@ -308,7 +421,7 @@
   position: absolute;
   bottom: 96px;
   right: 16px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: 1px solid var(--stamiku-primary, #ff0000);
   border-radius: 4px;
@@ -322,7 +435,7 @@
 }
 
 .stamiku-intro-skip:hover {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .stamiku-hidden {
@@ -354,10 +467,57 @@
   z-index: 9999;
 }
 
+.stamiku-language-switcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding: 5px;
+  z-index: 30;
+  display: flex;
+  gap: 5px;
+}
+
+.stamiku-language-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.stamiku-language-btn.active {
+  background-color: var(--stamiku-primary, #ff0000);
+  border-color: var(--stamiku-primary, #ff0000);
+}
+
+/* Fix for rotation when fullscreen */
+.stamiku-player.fullscreen-active {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
 @keyframes pulse {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
   50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+/* Fix for touch devices */
+@media (hover: none) {
+  .stamiku-volume-container:hover .stamiku-volume-slider {
+    width: 60px;
+    opacity: 1;
+  }
+  
+  .stamiku-btn.stamiku-volume-btn.touch-active + .stamiku-volume-slider {
+    width: 60px;
+    opacity: 1;
+  }
 }
   `;
 
@@ -385,10 +545,24 @@
     return null;
   }
 
+  function lockScreenOrientation() {
+    if (window.screen && window.screen.orientation && window.screen.orientation.lock) {
+      window.screen.orientation.lock('landscape').catch(function(error) {
+        console.log('Orientation lock failed: ', error);
+      });
+    }
+  }
+  
+  function unlockScreenOrientation() {
+    if (window.screen && window.screen.orientation && window.screen.orientation.unlock) {
+      window.screen.orientation.unlock();
+    }
+  }
+
   Stamiku.createPlayer = function(selector, options = {}) {
     const container = document.querySelector(selector);
     if (!container) {
-      console.error('Stamiku: Belirtilen element bulunamadı:', selector);
+      console.error('Stamiku: Specified element not found:', selector);
       return null;
     }
 
@@ -399,6 +573,7 @@
       loop: false,
       controls: true,
       primaryColor: '#ff0000',
+      language: 'en',
       intro: {
         enabled: false,
         startTime: 0,
@@ -407,6 +582,15 @@
     };
 
     const settings = Object.assign({}, defaultOptions, options);
+    
+    const savedLanguage1 = getCookie('stamiku_language');
+    if (savedLanguage1 && translations[savedLanguage1]) {
+      settings.language = savedLanguage1;
+    } else if (!translations[settings.language]) {
+      settings.language = 'en';
+    }
+    
+    const lang = translations[settings.language];
     
     document.documentElement.style.setProperty('--stamiku-primary', settings.primaryColor);
 
@@ -424,7 +608,9 @@
           ${settings.autoplay ? 'autoplay' : ''} 
           ${settings.muted ? 'muted' : ''} 
           ${settings.loop ? 'loop' : ''}
+          playsinline
         ></video>
+
         
         <div class="stamiku-controls">
           <div class="stamiku-progress-container">
@@ -457,29 +643,29 @@
         <button class="stamiku-big-play-btn">${Icons.play}</button>
         
         <div class="stamiku-settings-panel stamiku-hidden">
-          <div class="stamiku-settings-title">Oynatma Hızı</div>
+          <div class="stamiku-settings-title">${lang.playbackSpeed}</div>
           <div class="stamiku-settings-speeds">
             ${[0.5, 0.75, 1, 1.25, 1.5, 1.75, 2].map(speed => 
               `<button class="stamiku-speed-btn ${speed === 1 ? 'active' : ''}" data-speed="${speed}">${speed}x</button>`
             ).join('')}
           </div>
           
-          <div class="stamiku-settings-title">Kısayollar</div>
+          <div class="stamiku-settings-title">${lang.shortcuts}</div>
           <div class="stamiku-shortcuts">
             <div class="stamiku-shortcut-row">
-              <span>Oynat/Duraklat:</span>
+              <span>${lang.playPause}</span>
               <span class="stamiku-shortcut-key">Space, K</span>
             </div>
             <div class="stamiku-shortcut-row">
-              <span>İleri/Geri:</span>
+              <span>${lang.forward}</span>
               <span class="stamiku-shortcut-key">←→</span>
             </div>
             <div class="stamiku-shortcut-row">
-              <span>Tam Ekran:</span>
+              <span>${lang.fullscreen}</span>
               <span class="stamiku-shortcut-key">F</span>
             </div>
             <div class="stamiku-shortcut-row">
-              <span>Sessiz:</span>
+              <span>${lang.mute}</span>
               <span class="stamiku-shortcut-key">M</span>
             </div>
           </div>
@@ -504,6 +690,7 @@
     const progressBar = player.querySelector('.stamiku-progress-bar');
     const progress = player.querySelector('.stamiku-progress');
     const progressThumb = player.querySelector('.stamiku-progress-thumb');
+    const languageBtns = player.querySelectorAll('.stamiku-language-btn');
     
     let isPlaying = false;
     let isMuted = settings.muted;
@@ -513,6 +700,8 @@
     let currentVolume = isMuted ? 0 : 1;
     let skipAnimationTimeout;
     let introSkipBtn = null;
+    let currentLanguage = settings.language;
+    let isProgressBarDragging = false;
     
     video.addEventListener('contextmenu', function(event) {
       event.preventDefault();
@@ -523,7 +712,7 @@
         left: ${event.pageX}px;
         top: ${event.pageY}px;
       `;
-      menuDiv.textContent = 'Stamiku v1.0';
+      menuDiv.textContent = 'Stamiku v1.1';
       document.body.appendChild(menuDiv);
       
       document.addEventListener('click', function closeMenu() {
@@ -565,7 +754,7 @@
     if (settings.intro && settings.intro.enabled) {
       introSkipBtn = document.createElement('button');
       introSkipBtn.className = 'stamiku-intro-skip stamiku-hidden';
-      introSkipBtn.innerHTML = `<span>İntroyu Atla</span>${Icons.skipForward}`;
+      introSkipBtn.innerHTML = `<span>${translations[currentLanguage].skipIntro}</span>${Icons.skipForward}`;
       player.appendChild(introSkipBtn);
     }
     
@@ -598,7 +787,7 @@
           bigPlayBtn.classList.add('stamiku-hidden');
           showControlsTemporarily();
         }).catch(error => {
-          console.error('Stamiku: Video oynatma hatası:', error);
+          console.error('Stamiku: Video playback error:', error);
         });
       } else {
         video.pause();
@@ -627,11 +816,17 @@
     
     function toggleFullScreen() {
       if (!document.fullscreenElement) {
-        player.requestFullscreen().catch(err => {
-          console.error('Stamiku: Tam ekran hatası:', err);
+        player.requestFullscreen().then(() => {
+          player.classList.add('fullscreen-active');
+          lockScreenOrientation();
+        }).catch(err => {
+          console.error('Stamiku: Fullscreen error:', err);
         });
       } else {
-        document.exitFullscreen();
+        document.exitFullscreen().then(() => {
+          player.classList.remove('fullscreen-active');
+          unlockScreenOrientation();
+        });
       }
     }
     
@@ -707,6 +902,32 @@
         });
       }
     }
+    
+    function changeLanguage(langCode) {
+      if (translations[langCode]) {
+        currentLanguage = langCode;
+        
+        languageBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === langCode);
+        });
+        
+        const settingsTitles = settingsPanel.querySelectorAll('.stamiku-settings-title');
+        settingsTitles[0].textContent = translations[langCode].playbackSpeed;
+        settingsTitles[1].textContent = translations[langCode].shortcuts;
+        
+        const shortcutRows = settingsPanel.querySelectorAll('.stamiku-shortcut-row');
+        shortcutRows[0].firstElementChild.textContent = translations[langCode].playPause;
+        shortcutRows[1].firstElementChild.textContent = translations[langCode].forward;
+        shortcutRows[2].firstElementChild.textContent = translations[langCode].fullscreen;
+        shortcutRows[3].firstElementChild.textContent = translations[langCode].mute;
+        
+        if (introSkipBtn) {
+          introSkipBtn.querySelector('span').textContent = translations[langCode].skipIntro;
+        }
+        
+        setCookie('stamiku_language', langCode, 30);
+      }
+    }
 
     function loadSavedPosition() {
       const savedPosition = getCookie(`stamiku_position_${btoa(settings.src)}`);
@@ -724,6 +945,42 @@
         setCookie(`stamiku_position_${btoa(settings.src)}`, video.currentTime, 30);
       }
     }
+    
+    settings.language = options.language && translations[options.language]
+     ? options.language
+     : 'en';
+
+
+     changeLanguage(settings.language);
+
+    progressBar.addEventListener('touchstart', function(event) {
+      event.preventDefault();
+      const touch = event.touches[0];
+      const rect = progressBar.getBoundingClientRect();
+      const pos = (touch.clientX - rect.left) / rect.width;
+      skipToTime(pos * video.duration);
+      isProgressBarDragging = true;
+    }, { passive: false });
+    
+    document.addEventListener('touchmove', function(event) {
+      if (isProgressBarDragging) {
+        event.preventDefault();
+        const touch = event.touches[0];
+        const rect = progressBar.getBoundingClientRect();
+        const pos = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+        skipToTime(pos * video.duration);
+      }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function() {
+      isProgressBarDragging = false;
+    });
+    
+    volumeBtn.addEventListener('touchstart', function(event) {
+      event.preventDefault();
+      volumeBtn.classList.toggle('touch-active');
+      event.stopPropagation();
+    }, { passive: false });
     
     video.addEventListener('timeupdate', updateProgressBar);
     
@@ -827,6 +1084,12 @@
       });
     });
     
+    languageBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        changeLanguage(btn.dataset.lang);
+      });
+    });
+    
     progressBar.addEventListener('click', (event) => {
       const rect = progressBar.getBoundingClientRect();
       const pos = (event.clientX - rect.left) / rect.width;
@@ -847,6 +1110,11 @@
     document.addEventListener('fullscreenchange', () => {
       isFullScreen = !!document.fullscreenElement;
       fullscreenBtn.innerHTML = isFullScreen ? Icons.exitFullscreen : Icons.fullscreen;
+      
+      if (!isFullScreen) {
+        player.classList.remove('fullscreen-active');
+        unlockScreenOrientation();
+      }
     });
     
     document.addEventListener('keydown', (event) => {
@@ -939,6 +1207,13 @@
       isPaused: () => video.paused,
       
       savePosition: savePosition,
+      
+      setLanguage: (lang) => {
+        if (translations[lang]) {
+          changeLanguage(lang);
+        }
+      },
+      getLanguage: () => currentLanguage,
       
       getElements: () => ({
         player,
